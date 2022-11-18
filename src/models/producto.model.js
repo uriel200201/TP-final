@@ -1,7 +1,7 @@
-const { model, schema, mongoose } = require('mongoose')
+const { model, Schema, mongoose } = require('mongoose')
 const Float = require('mongoose-float').loadType(mongoose)
 
-const ProductosSchema = new schema({
+const ProductosSchema = new Schema({
 	idProducto: {
 		type: Number,
 		required: [true, 'El codigo del producto es obligatorio'],
