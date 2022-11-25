@@ -1,10 +1,24 @@
 const addProductService = require('../services/product/addProductService')
 const getProductsService = require('../services/product/getProductsService')
+const getProductsByIdService = require('../services/product/getProductsByIdService')
 
 const getProductsController = async (req, res) => {
 	try {
 		const products = await getProductsService()
 		res.json({ message: `get API - Lista de Productos:`, products })
+	} catch (error) {
+		console.log(
+			'🚀 ~ file: productController.js ~ line 8 ~ getProductController ~ error',
+			error
+		)
+		res.json({ message: error.message })
+	}
+}
+
+const getProductsByIdController = async (req, res) => {
+	try {
+		const product = await getProductsByIdService(req)
+		res.json({ message: `get API - Producto por Id:`, product })
 	} catch (error) {
 		console.log(
 			'🚀 ~ file: productController.js ~ line 8 ~ getProductController ~ error',
@@ -29,4 +43,8 @@ const addProductController = async (req, res) => {
 	}
 }
 
-module.exports = { addProductController, getProductsController }
+module.exports = {
+	addProductController,
+	getProductsController,
+	getProductsByIdController,
+}
