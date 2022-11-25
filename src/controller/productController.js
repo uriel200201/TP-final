@@ -1,6 +1,8 @@
 const addProductService = require('../services/product/addProductService')
 const getProductsService = require('../services/product/getProductsService')
 const getProductsByIdService = require('../services/product/getProductsByIdService')
+const updateProductService = require('../services/product/updateProductService')
+const deleteProductService = require('../services/product/deleteProductService')
 
 const getProductsController = async (req, res) => {
 	try {
@@ -24,7 +26,7 @@ const getProductsByIdController = async (req, res) => {
 			'🚀 ~ file: productController.js ~ line 8 ~ getProductController ~ error',
 			error
 		)
-		res.json({ message: error.message })
+		res.status(error.cause).json({ message: error.message })
 	}
 }
 
@@ -43,8 +45,42 @@ const addProductController = async (req, res) => {
 	}
 }
 
+const updateProductController = async (req, res) => {
+	try {
+		const updateProduct = await updateProductService(req)
+		res.status(200).json({
+			message: `Modificado el roducto: ${updateProduct}, con id: ${req.params.idProducto}`,
+		})
+	} catch (error) {
+		console.log(
+			'🚀 ~ file: productController.js ~ line 51 ~ updateProductController ~ error',
+			error
+		)
+
+		res.json({ message: error.message })
+	}
+}
+
+const deleteProductController = async (req, res) => {
+	try {
+		const delProduct = await deleteProductService(req)
+		res.status(200).json({
+			message: `Producto con id: ${delProduct}, eliminado exitosamente`,
+		})
+	} catch (error) {
+		console.log(
+			'🚀 ~ file: productController.js ~ line 51 ~ updateProductController ~ error',
+			error
+		)
+
+		res.status(error.cause).json({ message: error.message })
+	}
+}
+
 module.exports = {
 	addProductController,
 	getProductsController,
 	getProductsByIdController,
+	updateProductController,
+	deleteProductController,
 }

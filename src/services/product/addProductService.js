@@ -1,10 +1,10 @@
-const ProductoModel = require('../../models/producto.model')
+const ProductoModel = require('../../models/producto.models')
 
 const addProductService = async (req) => {
-	const product = req.body
-	const newProduct = new ProductoModel(product)
+	const producto = req.body
+	const newProduct = new ProductoModel(producto)
 	await newProduct.save()
-	return product
+	return producto
 }
 
 module.exports = addProductService

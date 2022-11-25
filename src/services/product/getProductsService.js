@@ -1,4 +1,4 @@
-const ProductoModel = require('../../models/producto.model')
+const ProductoModel = require('../../models/producto.models')
 const getProductsService = async () => {
 	const products = await ProductoModel.find()
 	return products
