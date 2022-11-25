@@ -13,7 +13,7 @@ const getProductsController = async (req, res) => {
 			'🚀 ~ file: productController.js ~ line 8 ~ getProductController ~ error',
 			error
 		)
-		res.json({ message: error.message })
+		res.status(error.cause).json({ message: error.message })
 	}
 }
 
