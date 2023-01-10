@@ -9,10 +9,6 @@ const getProductsController = async (req, res) => {
 		const products = await getProductsService()
 		res.json({ message: `get API - Lista de Productos:`, products })
 	} catch (error) {
-		console.log(
-			'🚀 ~ file: productController.js ~ line 8 ~ getProductController ~ error',
-			error
-		)
 		res.status(error.cause).json({ message: error.message })
 	}
 }
@@ -22,10 +18,6 @@ const getProductsByIdController = async (req, res) => {
 		const product = await getProductsByIdService(req)
 		res.json({ message: `get API - Producto por Id:`, product })
 	} catch (error) {
-		console.log(
-			'🚀 ~ file: productController.js ~ line 8 ~ getProductController ~ error',
-			error
-		)
 		res.status(error.cause).json({ message: error.message })
 	}
 }
@@ -37,10 +29,6 @@ const addProductController = async (req, res) => {
 			message: `Producto ${addProduct.producto} creado correctamente`,
 		})
 	} catch (error) {
-		console.log(
-			'🚀 ~ file: productController.js ~ line 24 ~ addProductController ~ error',
-			error
-		)
 		res.json({ message: error.message })
 	}
 }
@@ -52,11 +40,6 @@ const updateProductController = async (req, res) => {
 			message: `Modificado el roducto: ${updateProduct}, con id: ${req.params.idProducto}`,
 		})
 	} catch (error) {
-		console.log(
-			'🚀 ~ file: productController.js ~ line 51 ~ updateProductController ~ error',
-			error
-		)
-
 		res.json({ message: error.message })
 	}
 }
@@ -68,11 +51,6 @@ const deleteProductController = async (req, res) => {
 			message: `Producto con id: ${delProduct}, eliminado exitosamente`,
 		})
 	} catch (error) {
-		console.log(
-			'🚀 ~ file: productController.js ~ line 51 ~ updateProductController ~ error',
-			error
-		)
-
 		res.status(error.cause).json({ message: error.message })
 	}
 }

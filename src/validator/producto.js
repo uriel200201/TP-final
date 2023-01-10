@@ -11,12 +11,6 @@ const addProduct = [
 		.withMessage('El idProducto tiene que contener mas de 2 caracteres')
 		.isNumeric()
 		.withMessage('El idProducto tiene que ser numérico'),
-	// .custom((value) => {
-	// 	if (!Number(value))
-	// 		throw new Error('El idProducto tiene que ser numérico')
-
-	// 	return true
-	// }),
 	body('producto')
 		.exists()
 		.not()
